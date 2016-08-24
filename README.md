@@ -7,4 +7,4 @@ With Specflow 2.0 Parallel execution is supported using xUnit and NUnit framewor
 
 You can watch the complete video of the source code built from scratch from here
 
-[This link] https://www.youtube.com/watch?v=PiZ32T5k8-8
+https://www.youtube.com/watch?v=PiZ32T5k8-8
