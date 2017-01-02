@@ -4,6 +4,7 @@ using OpenQA.Selenium.Firefox;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
@@ -26,7 +27,12 @@ namespace SpecflowParallelTest
         [BeforeScenario]
         public void Initialize()
         {
-            _driver = new FirefoxDriver();
+            var driverDir = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembl‌​y().Location);
+            FirefoxDriverService service = FirefoxDriverService.CreateDefaultService(driverDir, "geckodriver.exe");
+            service.FirefoxBinaryPath = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
+            service.HideCommandPromptWindow = true;
+            service.SuppressInitialDiagnosticInformation = true;
+            _driver = new FirefoxDriver(service);
             _objectContainer.RegisterInstanceAs<IWebDriver>(_driver);
         }
 

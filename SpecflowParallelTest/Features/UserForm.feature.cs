@@ -72,32 +72,17 @@ namespace SpecflowParallelTest.Features
                         "mytag"});
 #line 5
 this.ScenarioSetup(scenarioInfo);
-#line 6
- testRunner.Given("I navigate to application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "UserName",
-                        "Password"});
-            table1.AddRow(new string[] {
-                        "admin",
-                        "admin"});
-#line 7
- testRunner.And("I enter username and password", ((string)(null)), table1, "And ");
-#line 10
- testRunner.And("I click login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Initial",
                         "FirstName",
                         "MiddleName"});
-            table2.AddRow(new string[] {
+            table1.AddRow(new string[] {
                         "k",
                         "Karthik",
                         "k"});
-#line 11
- testRunner.And("I start entering user form details like", ((string)(null)), table2, "And ");
-#line 14
- testRunner.And("I click submit button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 15
+ testRunner.And("I verify the entered user form details in the application database", ((string)(null)), table1, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
