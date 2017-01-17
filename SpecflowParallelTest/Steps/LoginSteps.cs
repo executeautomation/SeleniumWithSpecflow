@@ -41,16 +41,21 @@ namespace SpecflowParallelTest.Steps
         [Given(@"I click login")]
         public void GivenIClickLogin()
         {
-            Thread.Sleep(15000);
+            Thread.Sleep(1000);
             _driver.FindElement(By.Name("Login")).Submit();
+            Thread.Sleep(2000);
         }
 
         [Then(@"I should see user logged in to the application")]
         public void ThenIShouldSeeUserLoggedInToTheApplication()
         {
             var element = _driver.FindElement(By.XPath("//h1[contains(text(),'Execute Automation Selenium')]"));
-            Assert.That(element.Text, Is.Not.Null, "Header text not found !!!");
 
+            Assert.Multiple(() =>
+            {
+                Assert.That(element.Text, Is.Null, "Header text not found !!!");
+                Assert.That(element.Text, Is.Not.Null, "Header text not found !!!");
+            });
         }
 
 
