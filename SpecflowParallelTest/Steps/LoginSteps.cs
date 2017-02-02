@@ -51,9 +51,10 @@ namespace SpecflowParallelTest.Steps
         {
             var element = _driver.FindElement(By.XPath("//h1[contains(text(),'Execute Automation Selenium')]"));
 
+            //An way to assert multiple properties of single test
             Assert.Multiple(() =>
             {
-                Assert.That(element.Text, Is.Null, "Header text not found !!!");
+                //Assert.That(element.Text, Is.Null, "Header text not found !!!");
                 Assert.That(element.Text, Is.Not.Null, "Header text not found !!!");
             });
         }
