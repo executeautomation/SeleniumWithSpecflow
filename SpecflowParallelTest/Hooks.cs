@@ -27,7 +27,7 @@ namespace SpecflowParallelTest
         [BeforeScenario]
         public void Initialize()
         {
-            var driverDir = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembl‌​y().Location);
+            var driverDir = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             FirefoxDriverService service = FirefoxDriverService.CreateDefaultService(driverDir, "geckodriver.exe");
             service.FirefoxBinaryPath = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
             service.HideCommandPromptWindow = true;
