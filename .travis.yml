@@ -1,1 +1,16 @@
+language: csharp
+sudo: false
 
+before_install:
+  - rvm install 2.2
+  - rvm use 2.2
+  - gem install hiptest-publisher
+  - "hiptest-publisher -c  	hiptest-publisher.conf --token=356311910993567819130748981878586632242596659889492615116 --only=features,step_definitions --test-run-id=69826"
+
+script: 
+  - xbuild SpecflowParallelTest.csproj /t:buildnunitfiles
+  - xbuild SpecflowParallelTest.csproj /t:compile
+  - xbuild SpecflowParallelTest.csproj /t:test
+
+after_script:
+- hiptest-publisher -c hiptest-publisher.conf --token=$356311910993567819130748981878586632242596659889492615116 --push=TestResult.xml --test-run-id=69826
