@@ -14,3 +14,7 @@ script:
 
 after_script:
 - hiptest-publisher -c hiptest-publisher.conf --token=$356311910993567819130748981878586632242596659889492615116 --push=TestResult.xml --test-run-id=69826
+
+"group": "stable",
+  "dist": "precise",
+  "os": "windows"
