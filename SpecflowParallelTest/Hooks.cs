@@ -1,12 +1,8 @@
 ﻿using BoDi;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 
 namespace SpecflowParallelTest
@@ -27,13 +23,7 @@ namespace SpecflowParallelTest
         [BeforeScenario]
         public void Initialize()
         {
-            var driverDir = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembl‌​y().Location);
-            FirefoxDriverService service = FirefoxDriverService.CreateDefaultService(driverDir, "geckodriver.exe");
-            service.FirefoxBinaryPath = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
-            service.HideCommandPromptWindow = true;
-            service.SuppressInitialDiagnosticInformation = true;
-            _driver = new FirefoxDriver(service);
-            _objectContainer.RegisterInstanceAs<IWebDriver>(_driver);
+            SelectBrowser(BrowserType.Chrome);
         }
 
         [AfterScenario]
@@ -42,5 +32,39 @@ namespace SpecflowParallelTest
             _driver.Quit();
         }
 
+
+        internal void SelectBrowser(BrowserType browserType)
+        {
+            switch (browserType)
+            {
+                case BrowserType.Chrome:
+                    ChromeOptions option = new ChromeOptions();
+                    option.AddArgument("--headless");
+                    _driver = new ChromeDriver(option);
+                    _objectContainer.RegisterInstanceAs<IWebDriver>(_driver);
+                    break;
+                case BrowserType.Firefox:
+                    var driverDir = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembl‌​y().Location);
+                    FirefoxDriverService service = FirefoxDriverService.CreateDefaultService(driverDir, "geckodriver.exe");
+                    service.FirefoxBinaryPath = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
+                    service.HideCommandPromptWindow = true;
+                    service.SuppressInitialDiagnosticInformation = true;
+                    _driver = new FirefoxDriver(service);
+                    _objectContainer.RegisterInstanceAs<IWebDriver>(_driver);
+                    break;
+                case BrowserType.IE:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+    }
+
+    enum BrowserType
+    {
+        Chrome,
+        Firefox,
+        IE
     }
 }
