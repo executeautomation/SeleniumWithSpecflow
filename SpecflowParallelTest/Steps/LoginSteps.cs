@@ -1,11 +1,9 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+using OpenQA.Selenium.Remote;
+using SpecflowParallelTest.Pages;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
@@ -15,9 +13,9 @@ namespace SpecflowParallelTest.Steps
     public class LoginSteps
     {
 
-        private IWebDriver _driver;
+        private RemoteWebDriver _driver;
 
-        public LoginSteps(IWebDriver driver)
+        public LoginSteps(RemoteWebDriver driver)
         {
             _driver = driver;
         }
@@ -34,8 +32,11 @@ namespace SpecflowParallelTest.Steps
         {
             dynamic data = table.CreateDynamicInstance();
 
-            _driver.FindElement(By.Name("UserName")).SendKeys((String)data.UserName);
-            _driver.FindElement(By.Name("Password")).SendKeys((String)data.Password);
+            //_driver.FindElement(By.Name("UserName")).SendKeys((String)data.UserName);
+            //_driver.FindElement(By.Name("Password")).SendKeys((String)data.Password);
+
+            LoginPage page = new LoginPage(_driver);
+            page.EnterUserNameAndPassword("admin", "Admin");
         }
 
         [Given(@"I click login")]

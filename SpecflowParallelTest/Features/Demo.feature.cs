@@ -18,20 +18,21 @@ namespace SpecflowParallelTest.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.2.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("User Form")]
-    public partial class UserFormFeature
+    [NUnit.Framework.DescriptionAttribute("Demo")]
+    public partial class DemoFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "UserForm.feature"
+#line 1 "Demo.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "User Form", "\tFeature which holds all the user details entry", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Demo", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
+                    "f two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,9 +75,9 @@ namespace SpecflowParallelTest.Features
                         "positive",
                         "UI",
                         "Fix3452"});
-#line 5
+#line 7
 this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 8
  testRunner.Given("I navigate to application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -85,9 +86,9 @@ this.ScenarioSetup(scenarioInfo);
             table1.AddRow(new string[] {
                         "admin",
                         "admin"});
-#line 7
+#line 9
  testRunner.And("I enter username and password", ((string)(null)), table1, "And ");
-#line 10
+#line 12
  testRunner.And("I click login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -100,9 +101,9 @@ this.ScenarioSetup(scenarioInfo);
                         "Karthik",
                         "k",
                         "Hindi"});
-#line 11
+#line 13
  testRunner.And("I start entering user form details like", ((string)(null)), table2, "And ");
-#line 14
+#line 16
  testRunner.And("I click submit button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -113,10 +114,8 @@ this.ScenarioSetup(scenarioInfo);
                         "k",
                         "Karthik",
                         "k"});
-#line 15
- testRunner.Then("I verify the entered user form details in the application database", ((string)(null)), table3, "Then ");
-#line 18
- testRunner.Then("I logout of application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 17
+ testRunner.And("I verify the entered user form details in the application database", ((string)(null)), table3, "And ");
 #line hidden
             this.ScenarioCleanup();
         }

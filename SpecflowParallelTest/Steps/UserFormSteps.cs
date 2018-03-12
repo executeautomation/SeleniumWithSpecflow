@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using OpenQA.Selenium.Remote;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
@@ -13,9 +14,9 @@ namespace SpecflowParallelTest.Steps
     [Binding]
     class UserFormSteps
     {
-        private IWebDriver _driver;
+        private RemoteWebDriver _driver;
 
-        public UserFormSteps(IWebDriver driver)
+        public UserFormSteps(RemoteWebDriver driver)
         {
             _driver = driver;
         }
@@ -29,6 +30,7 @@ namespace SpecflowParallelTest.Steps
             _driver.FindElement(By.Id("Initial")).SendKeys((string)data.Initial);
             _driver.FindElement(By.Id("FirstName")).SendKeys((string)data.FirstName);
             _driver.FindElement(By.Id("MiddleName")).SendKeys((string)data.MiddleName);
+            _driver.FindElement(By.Name("english")).Click();
             Thread.Sleep(2000);
         }
 
@@ -39,6 +41,10 @@ namespace SpecflowParallelTest.Steps
         }
 
         [Given(@"I verify the entered user form details in the application database")]
+        [Then(@"I verify the entered user form details in the application database")]
+
+
+
         public void GivenIVerifyTheEnteredUserFormDetailsInTheApplicationDatabase(Table table)
         {
             //Mock data collection
