@@ -11,19 +11,33 @@ namespace SpecflowParallelTest.Pages
 {
     public class LoginPage
     {
-        public LoginPage(IWebDriver driver)
-        {
-            PageFactory.InitElements(driver, this);
-        }
 
-        [FindsBy(How = How.Name, Using = "UserName")]
-        public IWebElement txtUserName { get; set; }
+        //Classical way of initializing Pages via POM concept - Until Selenium 3.10.0
 
-        [FindsBy(How = How.Name, Using = "Password")]
-        public IWebElement txtPassword { get; set; }
+        //public LoginPage(IWebDriver driver)
+        //{
+        //    PageFactory.InitElements(driver, this);
+        //}
 
-        [FindsBy(How = How.Name, Using = "Login")]
-        public IWebElement btnLogin { get; set; }
+        //[FindsBy(How = How.Name, Using = "UserName")]
+        //public IWebElement txtUserName { get; set; }
+
+        //[FindsBy(How = How.Name, Using = "Password")]
+        //public IWebElement txtPassword { get; set; }
+
+        //[FindsBy(How = How.Name, Using = "Login")]
+        //public IWebElement btnLogin { get; set; }
+
+
+
+        private readonly RemoteWebDriver _driver;
+
+        public LoginPage(RemoteWebDriver driver) => _driver = driver;
+
+
+        IWebElement txtUserName => _driver.FindElementByName("UserName");
+        IWebElement txtPassword => _driver.FindElementByName("Password");
+        IWebElement btnLogin => _driver.FindElementByName("Login");
 
 
 
