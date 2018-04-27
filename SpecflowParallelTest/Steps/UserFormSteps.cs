@@ -73,6 +73,12 @@ namespace SpecflowParallelTest.Steps
 
         }
 
+        [Then(@"I logout of application")]
+        public void ThenILogoutOfApplication()
+        {
+            ScenarioContext.Current.Pending();
+        }
+
 
     }
 

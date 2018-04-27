@@ -1,0 +1,452 @@
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+    <meta charset='utf-8' />
+    <meta name='description' content='' />
+    <meta name='robots' content='noodp, noydir' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='https://cdn.rawgit.com/anshooarora/extentreports-csharp/3b6cc04fd241b9782606e57fc5e84f0e42172c08/dist/css/extent.css' type='text/css' rel='stylesheet' />
+
+    <title>ExtentReports</title>
+
+</head>
+    
+
+
+	<body class='extent standard default hide-overflow bdd'>
+		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
+			<span><i class='material-icons'>desktop_windows</i></span>
+		</div>
+
+		<nav>
+    <div class="nav-wrapper">
+        <a href="http://extentreports.relevantcodes.com" class="brand-logo blue darken-3">Extent</a>
+
+        <!-- slideout menu -->
+        <ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+            <li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
+                        <li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+        </ul>
+
+        <!-- report name -->
+        <span class='report-name'>ExtentReports</span>
+
+        <!-- report headline -->
+        <span class='report-headline'></span>
+
+        <!-- nav-right -->
+        <ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
+
+            <a>
+                <span class='suite-start-time label blue darken-3'>27-04-2018 22:48:24 New Zealand Standard Time</span>
+            </a>
+            <a>
+                <span class="label blue darken-3">3.1.0</span>
+            </a>
+        </ul>
+    </div>
+</nav>
+
+		<!-- container -->
+		<div class='container'>
+
+            
+<div id='test-view' class='view'>
+
+    <section id='controls'>
+        <div class='controls grey lighten-4'>
+            <!-- test toggle -->
+            <div class='chip transparent'>
+                <a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+                    <i class='material-icons'>warning</i> Status
+                </a>
+                <ul id='tests-toggle' class='dropdown-content'>
+                    <li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+                    <li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
+                    <li status='error'><a href='#!'>Error <i class='material-icons red-text lighten-2'>error</i></a></li>
+                    <li status='warning'><a href='#!'>Warning <i class='material-icons orange-text'>warning</i></a></li>
+                    <li status='skip'><a href='#!'>Skip <i class='material-icons cyan-text'>redo</i></a></li>
+                    <li class='divider'></li>
+                    <li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
+                </ul>
+            </div>
+            <!-- test toggle -->
+
+            <!-- category toggle -->
+            <!-- category toggle -->
+
+            <!-- clear filters -->
+            <div class='chip transparent hide'>
+                <a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+                    <i class='material-icons'>close</i> Clear
+                </a>
+            </div>
+            <!-- clear filters -->
+
+            <!-- enable dashboard -->
+
+            <div id='toggle-test-view-charts' class='chip transparent'>
+                    <a class='pink-text' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+                        <i class='material-icons'>track_changes</i> Dashboard
+                    </a>
+            </div>
+            <!-- enable dashboard -->
+
+            <!-- search -->
+            <div class='chip transparent' alt='Search Tests' title='Search Tests'>
+                <a href="#" class='search-div'>
+                    <i class='material-icons'>search</i> Search
+                </a>
+
+                <div class='input-field left hide'>
+                    <input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+                </div>
+
+            </div>
+            <!-- search -->
+        </div>
+    </section>
+
+
+
+<div id='test-view-charts' class='subview-full'>
+    <div id='charts-row' class='row nm-v nm-h'>
+        <div class='col s12 m4 l4 np-h'>
+            <div class='card-panel nm-v'>
+                <div class='left panel-name'>Features</div>
+                <div class='chart-box'>
+                    <canvas id='parent-analysis' width='100' height='80'></canvas>
+                </div>
+                <div class='block text-small'>
+                    <span><span class='strong'>1</span> test(s) passed</span>
+                </div>
+                <div class='block text-small'>
+                    <span class='strong'>1</span> test(s) failed, <span class='strong'>1</span> others
+                </div>
+            </div>
+        </div>
+
+            <div class='col s12 m4 l4 np-h'>
+                <div class='card-panel nm-v'>
+                    <div class='left panel-name'>Scenarios</div>
+                    <div class='chart-box'>
+                        <canvas id='child-analysis' width='100' height='80'></canvas>
+                    </div>
+                    <div class='block text-small'>
+                        <span><span class='strong'>1</span> step(s) passed</span>
+                    </div>
+                    <div class='block text-small'>
+                        <span class='strong'>1</span> step(s) failed, <span class='strong'>1</span> others
+                    </div>
+                </div>
+            </div>
+
+            <div class='col s12 m4 l4 np-h'>
+                <div class='card-panel nm-v'>
+                    <div class='left panel-name'>Steps</div>
+                    <div class='chart-box'>
+                        <canvas id='grandchild-analysis' width='100' height='80'></canvas>
+                    </div>
+                    <div class='block text-small'>
+                        <span><span class='strong'>16</span> step(s) passed</span>
+                    </div>
+                    <div class='block text-small'>
+                        <span class='strong'>1</span> step(s) failed, <span class='strong'>1</span> others
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+    <div class='subview-left left'>
+
+        <div class='view-summary'>
+            <h5>Tests</h5>
+
+            <ul id='test-collection' class='test-collection'>
+
+
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='1'>
+                        <div class='test-heading'>
+                            <span class='test-name'>Demo</span>
+                            <span class='test-time'>27-04-2018 22:48:24</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='2' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:07.1308923</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            User Details form entry verification
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='3' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I navigate to application
+                                                                                                                                                                    </li>
+                                                    <li test-id='4' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I enter username and password
+                                                                                                                                                                    </li>
+                                                    <li test-id='5' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I click login
+                                                                                                                                                                    </li>
+                                                    <li test-id='6' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I start entering user form details like
+                                                                                                                                                                    </li>
+                                                    <li test-id='7' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I click submit button
+                                                                                                                                                                    </li>
+                                                    <li test-id='8' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I verify the entered user form details in the application database
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf fail' status='fail' bdd='bdd' test-id='9'>
+                        <div class='test-heading'>
+                            <span class='test-name'>Login</span>
+                            <span class='test-time'>27-04-2018 22:48:37</span>
+                            <span class='test-status right fail'>Fail</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='10' status='fail'>
+                                        <span class='scenario-duration right label'>00:00:04.4741552</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Login user as Administrator
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='11' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I navigate to application
+                                                                                                                                                                    </li>
+                                                    <li test-id='12' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I enter username and password
+                                                                                                                                                                    </li>
+                                                    <li test-id='13' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I click login
+                                                                                                                                                                    </li>
+                                                    <li test-id='14' class='node then fail' status='then fail'>
+                                                        <b>Then</b>
+                                                        I should see user logged in to the application
+                                                                                                                                                                            <div class='pre'>One or more failures in Multiple Assert block:</div>
+                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf skip' status='skip' bdd='bdd' test-id='15'>
+                        <div class='test-heading'>
+                            <span class='test-name'>User Form</span>
+                            <span class='test-time'>27-04-2018 22:48:47</span>
+                            <span class='test-status right skip'>Skip</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='16' status='skip'>
+                                        <span class='scenario-duration right label'>00:00:06.7742278</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            User Details form entry verification
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='17' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I navigate to application
+                                                                                                                                                                    </li>
+                                                    <li test-id='18' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I enter username and password
+                                                                                                                                                                    </li>
+                                                    <li test-id='19' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I click login
+                                                                                                                                                                    </li>
+                                                    <li test-id='20' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I start entering user form details like
+                                                                                                                                                                    </li>
+                                                    <li test-id='21' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I click submit button
+                                                                                                                                                                    </li>
+                                                    <li test-id='22' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        I verify the entered user form details in the application database
+                                                                                                                                                                    </li>
+                                                    <li test-id='23' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        I logout of application
+                                                                                                                                                                    </li>
+                                                    <li test-id='24' class='node then skip' status='then skip'>
+                                                        <b>Then</b>
+                                                        I logout of application
+                                                                                                                                                                            <div class='pre'>Step Definition Pending</div>
+                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+            </ul>
+        </div>
+    </div>
+    <!-- subview left -->
+
+    <div class='subview-right left'>
+        <div class='view-summary'>
+            <h5 class='test-name'></h5>
+
+        </div>
+    </div>
+    <!-- subview right -->
+
+</div>
+<!-- test view -->
+            <!-- category view -->
+            
+
+
+    <div id='exception-view' class='view hide'>
+
+        <section id='controls'>
+            <div class='controls grey lighten-4'>
+                <!-- search -->
+                <div class='chip transparent' alt='Search Tests' title='Search Tests'>
+                    <a href="#" class='search-div'>
+                        <i class='material-icons'>search</i> Search
+                    </a>
+
+                    <div class='input-field left hide'>
+                        <input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+                    </div>
+                </div>
+                <!-- search -->
+            </div>
+        </section>
+
+        <div class='subview-left left'>
+
+            <div class='view-summary'>
+                <h5>Exceptions</h5>
+                <ul id='exception-collection' class='exception-collection'>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class='subview-right left'>
+            <div class='view-summary'>
+                <h5 class='exception-name'></h5>
+            </div>
+        </div>
+    </div>
+<!-- exception view -->
+            
+
+
+<div id='dashboard-view' class='view hide'>
+    <div class='card-panel transparent np-v'>
+        <h5>Dashboard</h5>
+
+        <div class='row'>
+            <div class='col s2'>
+                <div class='card-panel r'>
+ <span>Features</span>                     <div class='panel-lead'>3</div>
+                </div>
+            </div>
+            <div class='col s2'>
+                <div class='card-panel r'>
+ <span>Scenarios</span>                     <div class='panel-lead'>3</div>
+                </div>
+            </div>
+                <div class='col s2'>
+                    <div class='card-panel r'>
+                        Steps
+                        <div class='panel-lead'>18</div>
+                    </div>
+                </div>
+            <div class='col s2'>
+                <div class='card-panel r'>
+                    Start
+                    <div class='panel-lead'>27-04-2018 22:48:24</div>
+                </div>
+            </div>
+            <div class='col s2'>
+                <div class='card-panel r'>
+                    End
+                    <div class='panel-lead'>27-04-2018 22:49:02</div>
+                </div>
+            </div>
+            <div class='col s2'>
+                <div class='card-panel r'>
+                    Time Taken
+                    <div class='panel-lead'>00:00:37.6070187</div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!-- dashboard view -->
+            
+
+
+<!-- exception view -->
+
+		</div>
+		<!-- container -->
+
+		<script>
+			var statusGroup = {
+			    passParent: 1,
+			    failParent: 1,
+			    fatalParent: 0,
+			    errorParent: 0,
+			    warningParent: 0,
+			    skipParent: 1,
+				
+			    passChild: 1,
+			    failChild: 1,
+			    fatalChild: 0,
+			    errorChild: 0,
+			    warningChild: 0,
+			    skipChild: 1,
+			    infoChild: 0,
+				
+			    passGrandChild: 16,
+			    failGrandChild: 1,
+			    fatalGrandChild: 0,
+			    errorGrandChild: 0,
+			    warningGrandChild: 0,
+			    skipGrandChild: 1,
+			    infoGrandChild: 0
+			};
+		</script>
+
+		<script src='https://cdn.rawgit.com/anshooarora/extentreports-csharp/e468054d67d93c2fd9c8f0f60e31a7ea09fa3bf6/dist/js/extent.js' type='text/javascript'></script>
+		
+		
+			</body>
+	
+</html>

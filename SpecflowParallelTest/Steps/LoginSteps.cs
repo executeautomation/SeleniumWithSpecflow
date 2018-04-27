@@ -6,6 +6,9 @@ using OpenQA.Selenium.Remote;
 using SpecflowParallelTest.Pages;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
+using AventStack.ExtentReports.Reporter;
+using AventStack.ExtentReports;
+using AventStack.ExtentReports.Gherkin.Model;
 
 namespace SpecflowParallelTest.Steps
 {
@@ -53,7 +56,7 @@ namespace SpecflowParallelTest.Steps
             Assert.Multiple(() =>
             {
                 //Assert.That(element.Text, Is.Null, "Header text not found !!!");
-                Assert.That(element.Text, Is.Not.Null, "Header text not found !!!");
+                Assert.That(element.Text, Is.Null, "Header text not found !!!");
             });
         }
 
