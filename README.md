@@ -20,7 +20,7 @@ We will create extent report in BDD style using Specflow and Selenium C# with ba
 
 The complete demonstration is available as mini-series here <br />
 
-Part A - https://www.youtube.com/watch?v=C1RiUYkSKGw <br />
+**Part A** - https://www.youtube.com/watch?v=C1RiUYkSKGw <br />
 
 ![alt text](https://github.com/executeautomation/SeleniumWithSpecflow/blob/master/report.png)
 
