@@ -21,6 +21,8 @@ We will create extent report in BDD style using Specflow and Selenium C# with ba
 The complete demonstration is available as mini-series here
 Part A - https://www.youtube.com/watch?v=C1RiUYkSKGw
 
+![alt text](https://github.com/executeautomation/SeleniumWithSpecflow/blob/master/report.png)
+
 ## For more videos and articles visit
 ExecuteAutomation Site : http://www.executeautomation.com/site
 ExecuteAutomation Blog : http://www.executeautomation.com/blog
