@@ -18,8 +18,9 @@ https://www.youtube.com/watch?v=jgKgbVcQ-1U
 ## 3. Extent Report integration with Specflow and Selenium C#
 We will create extent report in BDD style using Specflow and Selenium C# with bare minimal code change in our existing code base.
 
-The complete demonstration is available as mini-series here
-Part A - https://www.youtube.com/watch?v=C1RiUYkSKGw
+The complete demonstration is available as mini-series here <br />
+
+Part A - https://www.youtube.com/watch?v=C1RiUYkSKGw <br />
 
 ![alt text](https://github.com/executeautomation/SeleniumWithSpecflow/blob/master/report.png)
 
