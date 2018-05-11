@@ -8,6 +8,7 @@ using TechTalk.SpecFlow;
 using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 using AventStack.ExtentReports.Gherkin.Model;
+using System;
 
 namespace SpecflowParallelTest
 {
@@ -18,6 +19,7 @@ namespace SpecflowParallelTest
         private static ExtentTest featureName;
         private static ExtentTest scenario;
         private static ExtentReports extent;
+        private static KlovReporter klov;
 
         private readonly IObjectContainer _objectContainer;
 
@@ -36,7 +38,19 @@ namespace SpecflowParallelTest
             htmlReporter.Configuration().Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
             //Attach report to reporter
             extent = new ExtentReports();
-            extent.AttachReporter(htmlReporter);
+            klov = new KlovReporter();
+
+            klov.InitMongoDbConnection("localhost", 27017);
+
+            klov.ProjectName = "ExecuteAutomation Test";
+
+            // URL of the KLOV server
+            klov.KlovUrl = "http://localhost:5689";
+
+            klov.ReportName = "Karthik KK" + DateTime.Now.ToString();
+
+
+            extent.AttachReporter(htmlReporter, klov);
         }
 
         [AfterTestRun]
