@@ -38,19 +38,19 @@ namespace SpecflowParallelTest
             htmlReporter.Configuration().Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
             //Attach report to reporter
             extent = new ExtentReports();
-            klov = new KlovReporter();
+            //klov = new KlovReporter();
 
-            klov.InitMongoDbConnection("localhost", 27017);
+            //klov.InitMongoDbConnection("localhost", 27017);
 
-            klov.ProjectName = "ExecuteAutomation Test";
+            //klov.ProjectName = "ExecuteAutomation Test";
 
-            // URL of the KLOV server
-            klov.KlovUrl = "http://localhost:5689";
+            //URL of the KLOV server
+            //klov.KlovUrl = "http://localhost:5689";
 
-            klov.ReportName = "Karthik KK" + DateTime.Now.ToString();
+            //klov.ReportName = "Karthik KK" + DateTime.Now.ToString();
 
 
-            extent.AttachReporter(htmlReporter, klov);
+            extent.AttachReporter(htmlReporter);
         }
 
         [AfterTestRun]
@@ -73,9 +73,9 @@ namespace SpecflowParallelTest
 
             var stepType = ScenarioStepContext.Current.StepInfo.StepDefinitionType.ToString();
 
-            PropertyInfo pInfo = typeof(ScenarioContext).GetProperty("TestStatus", BindingFlags.Instance | BindingFlags.NonPublic);
-            MethodInfo getter = pInfo.GetGetMethod(nonPublic: true);
-            object TestResult = getter.Invoke(ScenarioContext.Current, null);
+            //PropertyInfo pInfo = typeof(ScenarioContext).GetProperty("TestStatus", BindingFlags.Instance | BindingFlags.NonPublic);
+            //MethodInfo getter = pInfo.GetGetMethod(nonPublic: true);
+            //object TestResult = getter.Invoke(ScenarioContext.Current, null);
 
             if (ScenarioContext.Current.TestError == null)
             {
@@ -98,17 +98,17 @@ namespace SpecflowParallelTest
                     scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text).Fail(ScenarioContext.Current.TestError.Message);
             }
 
-            //Pending Status
-            if (TestResult.ToString() == "StepDefinitionPending")
-            {
-                if (stepType == "Given")
-                    scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text).Skip("Step Definition Pending");
-                else if (stepType == "When")
-                    scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text).Skip("Step Definition Pending");
-                else if (stepType == "Then")
-                    scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text).Skip("Step Definition Pending");
+            ////Pending Status
+            //if (TestResult.ToString() == "StepDefinitionPending")
+            //{
+            //    if (stepType == "Given")
+            //        scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text).Skip("Step Definition Pending");
+            //    else if (stepType == "When")
+            //        scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text).Skip("Step Definition Pending");
+            //    else if (stepType == "Then")
+            //        scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text).Skip("Step Definition Pending");
 
-            }
+            //}
 
         }
 
@@ -141,7 +141,7 @@ namespace SpecflowParallelTest
                 case BrowserType.Firefox:
                     var driverDir = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
                     FirefoxDriverService service = FirefoxDriverService.CreateDefaultService(driverDir, "geckodriver.exe");
-                    service.FirefoxBinaryPath = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
+                    service.FirefoxBinaryPath = @"C:\Program Files\Mozilla Firefox\firefox.exe";
                     service.HideCommandPromptWindow = true;
                     service.SuppressInitialDiagnosticInformation = true;
                     _driver = new FirefoxDriver(service);
